@@ -8,7 +8,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Define variables
-ARG FLUTTER_SDK=/flutter
+ARG FLUTTER_SDK=/home/flutter/sdk
 ARG FLUTTER_VERSION=3.24.4
 ARG FLUTTER_GIT_URL=https://github.com/flutter/flutter.git
 
@@ -16,16 +16,18 @@ ARG FLUTTER_GIT_URL=https://github.com/flutter/flutter.git
 # and to install flutter so it doesn't get mad about using super user
 RUN groupadd -r flutter && useradd -r -g flutter -m flutter
 
-# Create the Flutter SDK directory and change its ownership
-RUN mkdir -p $FLUTTER_SDK && chown flutter:flutter $FLUTTER_SDK
-
-# Switch to the flutter user
-USER flutter
+# Create the Flutter SDK directory
+RUN mkdir -p $FLUTTER_SDK
 
 # Clone Flutter
 # This gets mad about being on a user-defined channel and not matching FLUTTER_GIT_URL
 # but seems to work ok, though we should investigate this
 RUN git clone $FLUTTER_GIT_URL $FLUTTER_SDK -b $FLUTTER_VERSION --progress
+
+RUN chown -R flutter:flutter $FLUTTER_SDK
+
+# Switch to the flutter user
+USER flutter
 
 # Setup the Flutter path as an environmental variable
 ENV PATH="$FLUTTER_SDK/bin:$FLUTTER_SDK/bin/cache/dart-sdk/bin:$PATH"
