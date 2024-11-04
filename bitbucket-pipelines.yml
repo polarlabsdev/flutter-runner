@@ -12,7 +12,7 @@ pipelines:
           script:
             - doctl registry login --expiry-seconds 3600
             - export IMAGE_NAME=$IMAGE_TAG_NAME:$FLUTTER_VERSION
-            - docker build -t $IMAGE_NAME $BITBUCKET_CLONE_DIR
+            - docker build --build-arg FLUTTER_VERSION=$FLUTTER_VERSION -t $IMAGE_NAME $BITBUCKET_CLONE_DIR         
             - docker push $IMAGE_NAME
           services:
             - docker

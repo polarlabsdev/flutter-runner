@@ -61,8 +61,8 @@ Example `bitbucket-pipelines.yml` configuration for web builds:
 ```yaml
 image:
   name: registry.digitalocean.com/<your-registry>/<repo>:<tag>
-  username: $DIGITAL_OCEAN_TOKEN
-  password: $DIGITAL_OCEAN_TOKEN
+  username: $DIGITALOCEAN_ACCESS_TOKEN
+  password: $DIGITALOCEAN_ACCESS_TOKEN
 
 pipelines:
   default:

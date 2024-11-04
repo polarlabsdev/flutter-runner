@@ -1,5 +1,7 @@
 FROM debian:stable-slim AS build
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Install all needed stuff and clean up APT cache
 RUN apt-get update && \
     apt-get install -y git curl unzip && \
@@ -12,7 +14,7 @@ ARG FLUTTER_GIT_URL=https://github.com/flutter/flutter.git
 
 # Create a user and group named flutter to use in child images
 # and to install flutter so it doesn't get mad about using super user
-RUN groupadd -r flutter && useradd -r -g flutter flutter
+RUN groupadd -r flutter && useradd -r -g flutter -m flutter
 
 # Create the Flutter SDK directory and change its ownership
 RUN mkdir -p $FLUTTER_SDK && chown flutter:flutter $FLUTTER_SDK
