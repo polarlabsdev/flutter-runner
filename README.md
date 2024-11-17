@@ -1,6 +1,6 @@
 # Flutter Web Docker Image
 
-A custom Docker image specifically designed for building and deploying Flutter web applications. This image addresses common issues found in existing Flutter Docker images by providing a more reliable and stable environment for building Flutter web projects.
+A custom Docker image specifically designed for building and deploying Flutter web applications. This image provides the flutter executable specifically for building web apps and a non-root user to execute commands.
 
 ## Overview
 
