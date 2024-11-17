@@ -1,4 +1,4 @@
-image: alpine/doctl:1.27.13 # comes with doctl, kubectl, and helm
+image: debian:stable-slim
 
 # enable Docker for your repository
 options:
@@ -24,6 +24,7 @@ pipelines:
       - variables:
           - name: FLUTTER_VERSION
       - step:
+          image: alpine/doctl:1.27.13 # comes with doctl, kubectl, and helm
           name: Put docker image into DO registry
           script:
             - doctl registry login --expiry-seconds 3600
