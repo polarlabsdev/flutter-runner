@@ -1,4 +1,4 @@
-image: debian:stable-slim
+image: alpine/git:latest  # Small alpine-based image with git and ssh pre-installed
 
 # enable Docker for your repository
 options:
