@@ -9,7 +9,6 @@ pipelines:
     main:
       - step:
           name: Mirror to GitHub
-          deployment: github
           script:
             # bitbucket options will fetch just the current branch, so it is required to fetch all:
             - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
