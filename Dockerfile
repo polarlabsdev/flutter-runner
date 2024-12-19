@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install all needed stuff and clean up APT cache
 RUN apt-get update && \
-    apt-get install -y git curl unzip && \
+    apt-get install -y git curl unzip gettext moreutils && \
     rm -rf /var/lib/apt/lists/*
 
 # Define variables

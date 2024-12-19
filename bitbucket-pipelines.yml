@@ -20,7 +20,7 @@ pipelines:
             - git push --mirror $GITHUB_REPO_URL
 
   custom:
-    close-preview-environment:
+    deploy-flutter-runner:
       - variables:
           - name: FLUTTER_VERSION
       - step:
